@@ -40,7 +40,17 @@
         </button>
       </div>
       <div class="modal-body">
-        Are you sure want to buy {{ item.name }} for {{ item.price }}
+        <form method="POST">
+            {{ purchase_form.hidden_tag() }}
+            <h4 style="text-align: center">
+                Are you sure want to buy {{ item.name }} for {{ item.price }}$ ?
+            </h4>
+            <h6 style="text-align: center">
+                By clicking Purchase, you will purchase this item
+            </h6>
+            <input id="purchased_item" name="purchased_item" type="hidden" value="{{ item.id }}">
+            {{ purchase_form.submit(class="btn btn-outline-success btn-block" ) }}
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
